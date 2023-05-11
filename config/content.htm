@@ -154,41 +154,41 @@ doc["亂數 "].bind('click', add)
 <p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/41023237_nfu_edu_tw/ETH77A69TH1Jktuyw04WOW8BQN4RUffVkOV3a3GR1kxXig?e=VeD4Y0">7段顯示器圖片檔案</a></p>
 <p>記分板製作，一開始決定使用7段顯示器的方式去製作，並設計轉軸，但是過程並不順利，直到我發現，其他組的人利用顏色的改變來顯示數字，這十分的有趣，所以我參考她的程式並做出我自己的理解，和做出一點改變。</p>
 <p></p>
-<p>function sysCall_init()</p>
-<p>bubbleRob = sim.getObject('/bubbleRob1')<br/> ball = sim.getObject('/Sphere')<br/> bubbleRob2 = sim.getObject('/bubbleRob2')<br/> bubbleRob3 = sim.getObject('/bubbleRob3')<br/> <br/> initialPosition = sim.getObjectPosition(bubbleRob, -1)<br/> initialOrientation = sim.getObjectOrientation(bubbleRob, -1)<br/> <br/> initialPosition2 = sim.getObjectPosition(bubbleRob2, -1)<br/> initialOrientation2 = sim.getObjectOrientation(bubbleRob2, -1)<br/> <br/> initialballPosition = sim.getObjectPosition(ball, -1)<br/> initialballOrientation = sim.getObjectOrientation(ball, -1)<br/> <br/> initialPosition3 = sim.getObjectPosition(bubbleRob3, -1)<br/> initialOrientation3 = sim.getObjectOrientation(bubbleRob3, -1)</p>
-<p>sensor = sim.getObject('./sensor')<br/> <br/> score1 = 0</p>
-<p>score3 = 0 </p>
+<p><em>function sysCall_init()</em></p>
+<p><em>bubbleRob = sim.getObject('/bubbleRob1')</em><br/><em> ball = sim.getObject('/Sphere')</em><br/><em> bubbleRob2 = sim.getObject('/bubbleRob2')</em><br/><em> bubbleRob3 = sim.getObject('/bubbleRob3')</em><br/> <br/><em> initialPosition = sim.getObjectPosition(bubbleRob, -1)</em><br/><em> initialOrientation = sim.getObjectOrientation(bubbleRob, -1)</em><br/> <br/><em> initialPosition2 = sim.getObjectPosition(bubbleRob2, -1)</em><br/><em> initialOrientation2 = sim.getObjectOrientation(bubbleRob2, -1)</em><br/> <br/><em> initialballPosition = sim.getObjectPosition(ball, -1)</em><br/><em> initialballOrientation = sim.getObjectOrientation(ball, -1)</em><br/> <br/><em> initialPosition3 = sim.getObjectPosition(bubbleRob3, -1)</em><br/><em> initialOrientation3 = sim.getObjectOrientation(bubbleRob3, -1)</em></p>
+<p><em>sensor = sim.getObject('./sensor')</em><br/> <br/><em> score1 = 0</em></p>
+<p><em>score3 = 0 </em></p>
 <p></p>
 <p></p>
 <p>以上這些程式是在設定物體的對應，其中可以看到各個物體的對應和分數設置為0，再來很重要的是設定物體的對應位置，接下來在進球後要將所有物體重製。</p>
 <p></p>
 <p></p>
 <p></p>
-<p>s0={1,1,1,1,1,1,0}<br/> s1={0,0,0,1,1,0,0}<br/> s2={1,1,1,1,0,0,1}<br/> s3={0,1,1,1,0,0,1}<br/> s4={0,0,0,1,1,1,1}<br/> s5={0,1,1,0,1,1,1}<br/> s6={1,1,0,0,1,1,1}<br/> s7={0,0,1,1,1,0,0}<br/> s8={1,1,1,1,1,1,1}<br/> s9={0,1,1,1,1,1,1}<br/> s={s0,s1,s2,s3,s4,s5,s6,s7,s8,s9}</p>
+<p><em>s0={1,1,1,1,1,1,0}</em><br/><em> s1={0,0,0,1,1,0,0}</em><br/><em> s2={1,1,1,1,0,0,1}</em><br/><em> s3={0,1,1,1,0,0,1}</em><br/><em> s4={0,0,0,1,1,1,1}</em><br/><em> s5={0,1,1,0,1,1,1}</em><br/><em> s6={1,1,0,0,1,1,1}</em><br/><em> s7={0,0,1,1,1,0,0}</em><br/><em> s8={1,1,1,1,1,1,1}</em><br/><em> s9={0,1,1,1,1,1,1}</em><br/><em> s={s0,s1,s2,s3,s4,s5,s6,s7,s8,s9}</em></p>
 <p></p>
 <p>這是數字的儲存庫，對應著每一個7段顯示器中的一條，0和1就是不同的顏色，則s中的就是每一條的編號。</p>
 <p></p>
-<p>for j = 0,6,1 do<br/> local t = sim.getObject('./a['..j..']')<br/> <br/> if (s[1][j+1]==1) then<br/> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})<br/> else<br/> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})<br/> end<br/> end</p>
+<p><em>for j = 0,6,1 do</em><br/><em> local t = sim.getObject('./a['..j..']')</em><br/> <br/><em> if (s[1][j+1]==1) then</em><br/><em> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})</em><br/><em> else</em><br/><em> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})</em><br/><em> end</em><br/><em> end</em></p>
 <p></p>
 <p>for迴圈的應用，<span>sim.setShapeColor則是改變顏色後面的則是顏色編號，local是局部參數，sim.getObject('./a['..j..']')這是導入每一條的。</span></p>
 <p><span></span></p>
-<p><span>for j = 0,6,1 do<br/> local d = sim.getObject('./b['..j..']')<br/> if (s[1][j+1]==1) then<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})<br/> else<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})<br/> end<br/> end</span></p>
+<p><em>for j = 0,6,1 do<br/> local d = sim.getObject('./b['..j..']')<br/> if (s[1][j+1]==1) then<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})<br/> else<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})<br/> end<br/> end</em></p>
 <p><span></span></p>
 <p><span>這則是十位數的數字。</span></p>
 <p><span></span></p>
-<p><span>function sysCall_actuation()<br/> result = sim.readProximitySensor(sensor)<br/> if (result &gt; 0) then<br/> <br/> sim.setObjectPosition(bubbleRob, -1, initialPosition)<br/> sim.setObjectOrientation(bubbleRob, -1, initialOrientation)</span></p>
-<p><span><br/> sim.setObjectPosition(bubbleRob2, -1, initialPosition2)<br/> sim.setObjectOrientation(bubbleRob2, -1, initialOrientation2)</span></p>
-<p><span><br/> sim.setObjectPosition(ball, -1, initialballPosition)<br/> sim.setObjectOrientation(ball, -1, initialballOrientation)<br/> <br/> sim.setObjectPosition(bubbleRob3, -1, initialPosition3)<br/> sim.setObjectOrientation(bubbleRob3, -1, initialOrientation3)</span></p>
+<p><em>function sysCall_actuation()<br/> result = sim.readProximitySensor(sensor)<br/> if (result &gt; 0) then<br/> <br/> sim.setObjectPosition(bubbleRob, -1, initialPosition)<br/> sim.setObjectOrientation(bubbleRob, -1, initialOrientation)</em></p>
+<p><em><br/> sim.setObjectPosition(bubbleRob2, -1, initialPosition2)<br/> sim.setObjectOrientation(bubbleRob2, -1, initialOrientation2)</em></p>
+<p><em><br/> sim.setObjectPosition(ball, -1, initialballPosition)<br/> sim.setObjectOrientation(ball, -1, initialballOrientation)<br/> <br/> sim.setObjectPosition(bubbleRob3, -1, initialPosition3)<br/> sim.setObjectOrientation(bubbleRob3, -1, initialOrientation3)</em></p>
 <p><span></span></p>
 <p><span></span></p>
 <p><span>這裡很重要，result = sim.readProximitySensor(sensor)是導入偵測器的資料，當資料大於0時，所有的物體都會回到一開始設定的位置。</span></p>
 <p><span></span></p>
-<p><span>if (score1 &lt; 9) then<br/> score1 = score1 + 1<br/> os.execute("sleep 1")<br/> for i = 0, 9, 1 do<br/> if (score1 == i) then<br/> for j = 0, 6, 1 do<br/> local d = sim.getObject('./a['..j..']')<br/> if (s[i+1][j+1] == 1) then<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})<br/> else<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})<br/> end<br/> end<br/> end<br/> end</span></p>
-<p><span>score2 = score1</span></p>
+<p><em>if (score1 &lt; 9) then<br/> score1 = score1 + 1<br/> os.execute("sleep 1")<br/> for i = 0, 9, 1 do<br/> if (score1 == i) then<br/> for j = 0, 6, 1 do<br/> local d = sim.getObject('./a['..j..']')<br/> if (s[i+1][j+1] == 1) then<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})<br/> else<br/> sim.setShapeColor(d, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})<br/> end<br/> end<br/> end<br/> end</em></p>
+<p><em>score2 = score1</em></p>
 <p><span></span></p>
 <p><span>這裡很好理解，就是當score1小於9時，則score1+1，並將score2和score1相同。</span></p>
 <p><span></span></p>
-<p><span>elseif (score3 &lt; 9) then<br/> score1 = 0<br/> score3 = score3 + 1<br/> os.execute("sleep 1")<br/> for i = 0, 9, 1 do<br/> if (score3 == i) then<br/> for j = 0, 6, 1 do<br/> local t = sim.getObject('./b['..j..']')<br/> if (s[i+1][j+1] == 1) then<br/> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})<br/> else<br/> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})<br/> end<br/> end<br/> end<br/> end<br/> score4 = score3</span></p>
+<p><em>elseif (score3 &lt; 9) then<br/> score1 = 0<br/> score3 = score3 + 1<br/> os.execute("sleep 1")<br/> for i = 0, 9, 1 do<br/> if (score3 == i) then<br/> for j = 0, 6, 1 do<br/> local t = sim.getObject('./b['..j..']')<br/> if (s[i+1][j+1] == 1) then<br/> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {0, 1, 0})<br/> else<br/> sim.setShapeColor(t, nil, sim.colorcomponent_ambient_diffuse, {1, 1, 1})<br/> end<br/> end<br/> end<br/> end<br/> score4 = score3</em></p>
 <p><span></span></p>
 <p>這裡是控制十位數的。</p>
 <p></p>
@@ -201,6 +201,7 @@ doc["亂數 "].bind('click', add)
 <p><span style="color: #ff0000; background-color: #ffff00;">心得</span>:</p>
 <p>41023237</p>
 <p>機器人的移動程式是參考老師的，我學到如何利用程式與場景連線，並利用模組偵測鍵盤，來控制輪子的轉速，記分板實體並沒有做出來，畫好的圖放入場景，在炸掉的時候，有兩個元件分不開，所以正在重新製作，記分板的程式也沒有想法，總之再想辦法。</p>
+<p>計分板經過團隊的努力終於做出來了，不過我們參考了別人的計分程式，雖然沒有重頭製作，但在別人的程式中，我學到了許多東西，還學到我從來沒接觸的程式，還有不一樣的思路，我相信這些在接下來的課題中，一定會有幫助的。</p>
 <p>41023245</p>
 <p>這次的四人組課程我學習到如何製作簡單的線上多人對戰遊戲。</p>
 <p>41023248</p>
