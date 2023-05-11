@@ -25,10 +25,7 @@
 <p>負責網站管理</p>
 <p>41023248</p>
 <p>負責程式排錯</p>
-<p></p>
-<p>1到17亂數排列:</p>
-<p><button id="add1to100">1~17亂數排列</button></p>
-<p>將 iterable 與 iterator <a href="https://home.gamer.com.tw/creationDetail.php?sn=4337438">相關說明</a>, 利用 Brython 與 Ace Editor 整理在這個頁面.</p>
+<p><button id="亂數 ">亂數1~16</button></p>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/static/brython.js"></script>
@@ -86,7 +83,7 @@ def run1():
     try:
         url = doc.query["src"]
     except:
-        url = "https://gist.githubusercontent.com/41023245/40d2ef7cacec851d25b7bc0706159844/raw/72314387dd841b3f977122354daef9b4f7634db7/1~17.py"
+        url = "https://gist.githubusercontent.com/41023245/1c2e8b2da933007b31536231b80f0326/raw/1436c2ec8c087f3be43eded79479bfb434b6fec7/1~16"
     prog = open(url).read()
 
     # 將程式載入編輯區
@@ -108,7 +105,7 @@ doc['clear_bd1'].bind('click', clear_bd1)
 run1()
 </script>
 </p>
-<p><!-- add 1 to 100 開始 -->
+<p><!-- 亂數 -->
 <script type="text/python3">
 from browser import document as doc
 import ace
@@ -121,8 +118,7 @@ def clear_bd1(ev):
 # 利用 ace 中的 Editor 建立 Ace2 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
 Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
 
-add1to100_url = "https://gist.githubusercontent.com/41023245/40d2ef7cacec851d25b7bc0706159844/raw/5c39415c68b2f75578344a9a6ed1f5ba5923185f/1~17.py"
-
+add1to100_url = "https://gist.githubusercontent.com/ZYC0923/3250f2acaf77e80ebf8685b723c7f3b7/raw/3446003b3f120ccfdd3c0bc2dadc84e0b3d91622/222.py"
 # 從 gist 取得程式碼
 add_src = open(add1to100_url).read()
 def add(ev):
@@ -131,14 +127,14 @@ def add(ev):
     Ace2.editor.gotoLine(0)
     Ace2.run()
 
-# id 為 "add1to100" 的按鈕點按時, 執行 add 方法
-doc["add1to100"].bind('click', add)
+# id 為 "亂數 " 的按鈕點按時, 執行 add 方法
+doc["亂數 "].bind('click', add)
 </script>
 </p>
-<p><!-- add 1 to 100 結束--></p>
+<p><!-- 亂數  結束--></p>
 <!-- editor1 開始 -->
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor1" style="width: 600px; height: 300px;">/script</div>
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
 <p><!-- 存擋表單開始 --></p>
 <form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
@@ -150,7 +146,8 @@ doc["add1to100"].bind('click', add)
 <p></p>
 <p><!-- 程式執行 ouput 區 --></p>
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
-<p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p><h1>w11</h1>
+<p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
+<div id="brython_div1"></div><h1>w11</h1>
 <p>足球記分板</p>
 <p><a href="https://nfuedu-my.sharepoint.com/:f:/g/personal/41023237_nfu_edu_tw/EraIEPkCK1lOt_Qe_-8vLEYBDg2PSLPoWCP_kNY-z21EHA?e=ydKHjp">球場檔案</a></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/lAsRXVz4qxs" width="560"></iframe></p>
